@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kabiraj Khadka • Visuals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Re-using the style from your main page for consistency */
+        :root {
+            --bg: #e9ece8;
+            --text: #171212;
+            --accent: #b794f4;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        /* --- STYLES FOR THE GALLERY PAGE --- */
+        .page-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 2rem;
+        }
+        .gallery-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+        }
+        .gallery-header .back-link {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .gallery-header .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* The grid that will hold all your photos */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .photo-item {
+            overflow: hidden;
+            aspect-ratio: 1 / 1; /* Makes all photos square */
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .photo-item:hover {
+            transform: scale(0.97);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This prevents images from being stretched */
+            transition: filter 0.4s;
+        }
+        .photo-item:hover img {
+            filter: grayscale(100%);
+        }
+
+        /* --- STYLES FOR THE POP-UP MODAL (Same as before) --- */
+        .modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}.modal-content{margin:auto;display:block;width:90%;max-width:900px;text-align:center;animation:zoom .4s cubic-bezier(.19,1,.22,1)}#modalImage{width:100%;height:auto;border-radius:4px}#modalDescription{margin:25px auto 0 auto;color:#ccc;font-size:1.1rem;line-height:1.7;max-width:700px;text-align:left}.close-button{position:absolute;top:25px;right:45px;color:#f1f1f1;font-size:40px;font-weight:bold;transition:.3s}.close-button:hover,.close-button:focus{color:#bbb;text-decoration:none;cursor:pointer}@keyframes zoom{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="gallery-header">
+            <h1>Visuals</h1>
+            <a href="Homepage.html" class="back-link">&larr; Back to Portfolio</a>
+        </header>
+
+        <!-- ========== YOUR PHOTO GALLERY STARTS HERE ========== -->
+        <div class="photo-grid">
+
+            <!-- Photo 1 -->
+            <div class="photo-item" data-full-src="pic1.png" data-description="This is the story behind my first photo. It was a long hike but worth it for this single shot.">
+                <img src="pic1.png" alt="A mountain landscape">
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-item" data-full-src="IMG_2121.JPG" data-description="My story for the second photo.">
+                <img src="IMG_2121.JPG" alt="A beautiful landscape">
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="photo-item" data-full-src="images/photo3.jpg" data-description="My story for the third photo.">
+                <img src="images/photo3.jpg" alt="Description of photo 3">
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="photo-item" data-full-src="images/photo4.jpg" data-description="My story for the fourth photo.">
+                <img src="images/photo4.jpg" alt="Description of photo 4">
+            </div>
+
+            <!-- Photo 5 -->
+            <div class="photo-item" data-full-src="images/photo5.jpg" data-description="My story for the fifth photo.">
+                <img src="images/photo5.jpg" alt="Description of photo 5">
+            </div>
+            
+            <!-- TO ADD MORE PHOTOS, JUST COPY AND PASTE THE BLOCK ABOVE -->
+
+        </div>
+        <!-- ========== YOUR PHOTO GALLERY ENDS HERE ========== -->
+
+    </div>
+
+    <!-- Pop-up Modal for Gallery -->
+    <div id="imageModal" class="modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage">
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Modal Gallery Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const modalDesc = document.getElementById("modalDescription");
+            const photoElements = document.querySelectorAll(".photo-item");
+            const closeButton = document.querySelector(".close-button");
+
+            function openModal(fullSrc, description) {
+                modal.style.display = "flex";
+                modalImg.src = fullSrc;
+                modalDesc.textContent = description;
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+
+            photoElements.forEach(photo => {
+                photo.addEventListener('click', function() {
+                    const fullSrc = this.dataset.fullSrc;
+                    const description = this.dataset.description;
+                    openModal(fullSrc, description);
+                });
+            });
+
+            closeButton.addEventListener('click', closeModal);
+            window.addEventListener('click', (event) => {
+                if (event.target == modal) closeModal();
+            });
+            window.addEventListener('keydown', (event) => {
+                if (event.key === "Escape" && modal.style.display === "flex") closeModal();
+            });
+        });
+    </script>
+</body>
+</html>

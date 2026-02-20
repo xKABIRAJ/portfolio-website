@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kabiraj Khadka • Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Re-using the style from your main page for consistency */
+        :root {
+            --bg: #e9ece8;
+            --text: #171212;
+            --accent: #b794f4;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        /* --- STYLES FOR THE PROJECTS PAGE --- */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 2rem;
+        }
+        .page-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+        }
+        .page-header .back-link {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .page-header .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* A new grid layout for a more detailed project showcase */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* One project per row */
+            gap: 5rem; /* More space between projects */
+        }
+        .showcase-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .project-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .project-info h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .project-info h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .project-info p {
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .project-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--text);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .project-link:hover {
+            background-color: var(--text);
+            color: var(--bg);
+        }
+
+        /* On every second project, flip the layout */
+        .showcase-item:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+        .showcase-item:nth-child(even) .project-image {
+            order: 2; /* Move image to the right */
+        }
+        
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .showcase-item, .showcase-item:nth-child(even) {
+                grid-template-columns: 1fr; /* Stack on top of each other */
+            }
+            .showcase-item:nth-child(even) .project-image {
+                order: 1; /* Reset order */
+            }
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <header class="page-header">
+            <h1>Projects</h1>
+            <a href="Homepage.html" class="back-link">&larr; Back to Portfolio</a>
+        </header>
+
+        <!-- ========== YOUR PROJECTS SHOWCASE STARTS HERE ========== -->
+        <div class="showcase-grid">
+
+            <!-- Project 1 -->
+            <div class="showcase-item">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="Abstract photo of a motherboard">
+                </div>
+                <div class="project-info">
+                    <h3>01 / Generative Art</h3>
+                    <h2>Creative Coding</h2>
+                    <p>A collection of experiments using p5.js and GLSL shaders to turn mathematical formulas and algorithms into compelling visual art. This project explores the boundary between logic and creativity.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="showcase-item">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1554224324-498292850913?auto=format&fit=crop&w=800&q=60" alt="Japanese characters on paper">
+                </div>
+                <div class="project-info">
+                    <h3>02 / Web Application</h3>
+                    <h2>Kanji Explorer</h2>
+                    <p>An interactive web app designed to help Japanese language learners visualize the connections between Kanji characters. It provides etymology, stroke order, and usage examples in a clean interface.</p>
+                    <a href="#" class="project-link">View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="showcase-item">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1481878426999-99a3f2b7f05a?auto=format&fit=crop&w=800&q=60" alt="Person writing a story in a notebook">
+                </div>
+                <div class="project-info">
+                    <h3>03 / Interactive Fiction</h3>
+                    <h2>Narrative Worlds</h2>
+                    <p>A series of short, choice-based stories created with Twine. Inspired by the speculative fiction of Liu Cixin and Ted Chiang, this project explores "what if" scenarios through reader interaction.</p>
+                    <a href="#" class="project-link">Read Stories</a>
+                </div>
+            </div>
+
+            <!-- TO ADD MORE PROJECTS, JUST COPY AND PASTE THE "showcase-item" BLOCK ABOVE -->
+
+        </div>
+        <!-- ========== YOUR PROJECTS SHOWCASE ENDS HERE ========== -->
+
+    </div>
+</body>
+</html>
