@@ -252,13 +252,32 @@
             color: var(--secondary);
         }
 
-        /* Professional Visuals / Gallery Section */
+        /* Visuals / Gallery Section */
+        .gallery-group + .gallery-group {
+            margin-top: 1rem;
+        }
+
+        .gallery-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            margin-bottom: 1.2rem;
+        }
+
         #visuals .gallery {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-auto-rows: 28vw;
             gap: 1.2rem;
             padding-bottom: 6rem;
+        }
+
+        .gallery-empty {
+            margin: 0 0 5rem;
+            padding: 2rem;
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            color: var(--secondary);
+            text-align: center;
         }
 
         .photo {
@@ -519,62 +538,59 @@
     </section>
 
     <!-- ================= VISUALS / GALLERY ================= -->
-    <!-- To add or edit photos: 
-         1. Change `src` and `data-full-src` to your image path in `img/`
-         2. Change `data-place` to the location where the picture was taken
-         3. Change `data-caption` to your photo caption -->
     <section id="visuals">
         <h2>VISUALS</h2>
-        <div class="gallery">
-            
-            <!-- Photo 1 -->
-            <div class="photo" 
-                 data-full-src="img/IMG_2112.JPG" 
-                 data-place="Zhengzhou University, China"
-                 data-caption="Academic milestones and undergraduate engineering journey at Zhengzhou University.">
-                <img src="img/IMG_2112.JPG" alt="Zhengzhou University">
-                <div class="photo-overlay">
-                    <span class="photo-place">📍 Zhengzhou University, China</span>
-                    <p class="photo-caption">Academic milestones and undergraduate engineering journey at Zhengzhou University.</p>
+        <div class="gallery-group">
+            <h3 class="gallery-heading">Academic Experiences</h3>
+            <div class="gallery">
+                <div class="photo"
+                     data-full-src="img/IMG_2112.JPG"
+                     data-place="Zhengzhou University, China"
+                     data-caption="Academic milestones and undergraduate engineering journey at Zhengzhou University.">
+                    <img src="img/IMG_2112.JPG" alt="Zhengzhou University">
+                    <div class="photo-overlay">
+                        <span class="photo-place">📍 Zhengzhou University, China</span>
+                        <p class="photo-caption">Academic milestones and undergraduate engineering journey at Zhengzhou University.</p>
+                    </div>
+                </div>
+
+                <div class="photo"
+                     data-full-src="img/IMG_2121.JPG"
+                     data-place="Tsinghua University, Beijing"
+                     data-caption="Future Power and Energy System Summer School at the Department of Electrical Engineering.">
+                    <img src="img/IMG_2121.JPG" alt="Tsinghua University Summer School">
+                    <div class="photo-overlay">
+                        <span class="photo-place">📍 Tsinghua University, Beijing</span>
+                        <p class="photo-caption">Future Power and Energy System Summer School at the Department of Electrical Engineering.</p>
+                    </div>
+                </div>
+
+                <div class="photo"
+                     data-full-src="img/pic1.png"
+                     data-place="Tongji University, Shanghai"
+                     data-caption="Presenting our research poster at the Global Environment Solution Challenge & ISCES.">
+                    <img src="img/pic1.png" alt="Tongji University Presentation" onerror="this.src='img/IMG_2112.JPG'">
+                    <div class="photo-overlay">
+                        <span class="photo-place">📍 Tongji University, Shanghai</span>
+                        <p class="photo-caption">Presenting our research poster at the Global Environment Solution Challenge & ISCES.</p>
+                    </div>
+                </div>
+
+                <div class="photo"
+                     data-full-src="img/pic4.jpeg"
+                     data-place="HKUST (Guangzhou), Nansha"
+                     data-caption="Robotics and Autonomous Systems research at the AI4City Lab.">
+                    <img src="img/pic4.jpeg" alt="HKUST Guangzhou" onerror="this.src='img/IMG_2121.JPG'">
+                    <div class="photo-overlay">
+                        <span class="photo-place">📍 HKUST (Guangzhou), Nansha</span>
+                        <p class="photo-caption">Robotics and Autonomous Systems research at the AI4City Lab.</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Photo 2 -->
-            <div class="photo" 
-                 data-full-src="img/IMG_2121.JPG" 
-                 data-place="Tsinghua University, Beijing"
-                 data-caption="Future Power and Energy System Summer School at the Department of Electrical Engineering.">
-                <img src="img/IMG_2121.JPG" alt="Tsinghua University Summer School">
-                <div class="photo-overlay">
-                    <span class="photo-place">📍 Tsinghua University, Beijing</span>
-                    <p class="photo-caption">Future Power and Energy System Summer School at the Department of Electrical Engineering.</p>
-                </div>
-            </div>
-
-            <!-- Photo 3 -->
-            <div class="photo" 
-                 data-full-src="img/pic1.png" 
-                 data-place="Tongji University, Shanghai"
-                 data-caption="Presenting our research poster at the Global Environment Solution Challenge & ISCES.">
-                <img src="img/pic1.png" alt="Tongji University Presentation" onerror="this.src='img/IMG_2112.JPG'">
-                <div class="photo-overlay">
-                    <span class="photo-place">📍 Tongji University, Shanghai</span>
-                    <p class="photo-caption">Presenting our research poster at the Global Environment Solution Challenge & ISCES.</p>
-                </div>
-            </div>
-
-            <!-- Photo 4 -->
-            <div class="photo" 
-                 data-full-src="img/pic4.jpeg" 
-                 data-place="HKUST (Guangzhou), Nansha"
-                 data-caption="Robotics and Autonomous Systems research at the AI4City Lab.">
-                <img src="img/pic4.jpeg" alt="HKUST Guangzhou" onerror="this.src='img/IMG_2121.JPG'">
-                <div class="photo-overlay">
-                    <span class="photo-place">📍 HKUST (Guangzhou), Nansha</span>
-                    <p class="photo-caption">Robotics and Autonomous Systems research at the AI4City Lab.</p>
-                </div>
-            </div>
-
+        </div>
+        <div class="gallery-group">
+            <h3 class="gallery-heading">Captured Moments</h3>
+            <p class="gallery-empty">More moments to come.</p>
         </div>
     </section>
 
